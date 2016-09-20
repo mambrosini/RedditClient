@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.webkit.URLUtil;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ import com.example.maxi.redditclient.R;
 import com.example.maxi.redditclient.RoundedCornersImageView;
 import com.example.maxi.redditclient.activities.ImageActivity;
 import com.example.maxi.redditclient.model.Entry;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -49,6 +51,7 @@ public class EntryArrayAdapter extends ArrayAdapter<Entry> {
             holder.thumbnail = (RoundedCornersImageView) convertView.findViewById(R.id.image);
             holder.comments = (TextView) convertView.findViewById(R.id.numberOfComments);
             holder.container = (RelativeLayout) convertView.findViewById(R.id.entry_layout);
+            holder.progressBar = (ProgressBar) convertView.findViewById(R.id.progressBar);
 
             convertView.setTag(holder);
         } else {
@@ -62,7 +65,21 @@ public class EntryArrayAdapter extends ArrayAdapter<Entry> {
         holder.date.setText(DateUtils.getRelativeTimeSpanString(entry.getDate().getTime(), new Date().getTime() ,DateUtils.MINUTE_IN_MILLIS));
         if (URLUtil.isHttpUrl(entry.getThumbUrl()) || URLUtil.isHttpsUrl(entry.getThumbUrl())) {
             holder.thumbnail.setVisibility(View.VISIBLE);
-            Picasso.with(context).load(entry.getThumbUrl()).into(holder.thumbnail);
+            holder.progressBar.setVisibility(View.VISIBLE);
+            Picasso.with(context).load(entry.getThumbUrl()).into(holder.thumbnail, new Callback() {
+                @Override
+                public void onSuccess() {
+                    if (holder.progressBar != null) {
+                        holder.progressBar.setVisibility(View.GONE);
+                    }
+                }
+                @Override
+                public void onError() {
+                    if (holder.progressBar != null) {
+                        holder.progressBar.setVisibility(View.GONE);
+                    }
+                }
+            });
             holder.thumbnail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -75,6 +92,7 @@ public class EntryArrayAdapter extends ArrayAdapter<Entry> {
 
         } else {
             holder.thumbnail.setVisibility(View.GONE);
+            holder.progressBar.setVisibility(View.GONE);
         }
         holder.comments.setText(String.valueOf(entry.getNumberOfComments()));
 
@@ -97,6 +115,7 @@ public class EntryArrayAdapter extends ArrayAdapter<Entry> {
         public RoundedCornersImageView thumbnail;
         public TextView comments;
         public RelativeLayout container;
+        public ProgressBar progressBar;
     }
 
 }

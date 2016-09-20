@@ -100,6 +100,15 @@
             android:layout_alignParentRight="true"
             android:scaleType="centerCrop"
             android:visibility="visible"/>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:padding="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/title"
+            android:layout_margin="5dp"
+            android:layout_alignParentRight="true"
+            android:visibility="visible"/>
     </RelativeLayout>
 
 </LinearLayout>
