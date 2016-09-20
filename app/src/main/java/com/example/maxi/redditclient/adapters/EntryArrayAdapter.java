@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.maxi.redditclient.R;
+import com.example.maxi.redditclient.RoundedCornersImageView;
 import com.example.maxi.redditclient.activities.ImageActivity;
 import com.example.maxi.redditclient.model.Entry;
 import com.squareup.picasso.Picasso;
@@ -45,7 +46,7 @@ public class EntryArrayAdapter extends ArrayAdapter<Entry> {
             holder.title = (TextView) convertView.findViewById(R.id.title);
             holder.author = (TextView) convertView.findViewById(R.id.author);
             holder.date = (TextView) convertView.findViewById(R.id.date);
-            holder.thumbnail = (ImageView) convertView.findViewById(R.id.image);
+            holder.thumbnail = (RoundedCornersImageView) convertView.findViewById(R.id.image);
             holder.comments = (TextView) convertView.findViewById(R.id.numberOfComments);
             holder.container = (RelativeLayout) convertView.findViewById(R.id.entry_layout);
 
@@ -93,7 +94,7 @@ public class EntryArrayAdapter extends ArrayAdapter<Entry> {
         public TextView title;
         public TextView author;
         public TextView date;
-        public ImageView thumbnail;
+        public RoundedCornersImageView thumbnail;
         public TextView comments;
         public RelativeLayout container;
     }

@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:textSize="16sp"
-            android:fontFamily="sans-serif-thin"
+            android:fontFamily="sans-serif-light"
             tools:text="Title"/>
 
         <ImageView
@@ -91,7 +91,7 @@
             android:layout_marginStart="5dp"
             android:fontFamily="sans-serif-light"
             tools:text="Comments"/>
-        <ImageView
+        <com.example.maxi.redditclient.RoundedCornersImageView
             android:id="@+id/image"
             android:layout_width="50dp"
             android:layout_height="50dp"
