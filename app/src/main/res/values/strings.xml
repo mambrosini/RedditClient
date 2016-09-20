@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Reddit Client</string>
+    <string name="downloading_image">Downloading image…</string>
+    <string name="downloading_image_error">An error occurred when trying to download the image</string>
+    <string name="downloading_entries_error">An error occurred when downloading the top entries. Please try again later.</string>
+    <string name="write_to_storage_permission_denied">Permission to write to storage was denied!</string>
+    <string name="updating_top_entries">Updating top entries…</string>
+    <string name="image_saved">The image was saved on your device</string>
+</resources>
